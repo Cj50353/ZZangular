@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css"/>
+</head>
+<body >
+<!--目前有三个作用域 1：ng-app的作用域 2：firstController的作用域 3：secondController的作用域,在这里
+firstController的作用域是包含secondController。输入firstController里的name，secondController里的name也会改变
+（前提是secondController里的name没有被赋初值），而反过来修改secondController里的name不会影响firstController里的name,
+因为作用域不够,但是一旦secondController的name值被输入改变了也就是被创建了，再次输入firstController的name值也不会改变secondController的name值
+-->
+<div ng-app><!--angular会管理这个div-->
+    <div ng-controller="firstController">  <!--//会去找firstController这个函数-->
+        <div class="checkbox">
+            <label class="checkbox-inline" ng-repeat="li in list">
+                <input type="checkbox" id="inlineCheckbox1"  ng-checked="li.checked" ng-disabled="li.disabled"><span ng-bind="li.text"></span>
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="option1" ng-click="selectAll()"><span>全选</span>
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" value="option1" ng-click="unselectAll()"><span>反选</span>
+            </label>
+        </div>
+    </div>
+
+<!--11-->
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1457437487,655486635&fm=111&gp=0.jpg" alt="First slide">
+            </div>
+            <div class="item">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1589956140,1606448699&fm=116&gp=0.jpg" alt="Second slide">
+            </div>
+            <div class="item">
+                <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2546610023,3120506294&fm=111&gp=0.jpg" alt="Third slide">
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#myCarousel"
+           data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel"
+           data-slide="next">&rsaquo;</a>
+    </div>
+
+</div>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/angularjs.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="ctrl1">
+        <h1>来自ctrl1的内容</h1>
+        name:<span ng-bind="name"></span>--------------------age:<span ng-bind="age"></span>
+        <hr/>
+        name: <input type="text" ng-model="name"/><br/>
+        age: <input type="text" ng-model="age"/><br/>
+        使用ngBind绑定的数据:<span type="text" ng-bind="num"></span>
+        使用ngModel绑定的数据:<input type="text" ng-model="num"/><br/>
+        <button ng-click="setPerson()">setPerson</button>
+        <button ng-click="getPerson()">getPerson</button>
+    </div>
+    <div ng-controller="ctrl2">
+        <h1>来自ctrl2的内容</h1>
+        name:<span ng-bind="name"></span>--------------------age:<span ng-bind="age"></span>
+        <hr/>
+        name: <input type="text" ng-model="name"/><br/>
+        age: <input type="text" ng-model="age"/><br/>
+        使用ngBind绑定的数据:<span type="text" ng-bind="num"></span>
+        使用ngModel绑定的数据:<input type="text" ng-model="num"/><br/>
+        <button ng-click="setPerson()">setPerson</button>
+        <button ng-click="getPerson()">getPerson</button>
+    </div>
+    <div ng-controller="ctrl3">
+        <h1>来自ctrl3的内容</h1>
+        name:<span ng-bind="name"></span>--------------------age:<span ng-bind="age"></span>
+        <button ng-click="show()">获取cookie</button>
+    </div>
+    <script type="text/javascript" src="../../js/angularjs.js"></script>
+    <script type="text/javascript" src="../../js/ngStorage.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</div>
+</body>
+</html>

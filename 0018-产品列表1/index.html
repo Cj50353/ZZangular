@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <!--ng-app管理整个div,如果引号不为空，则认为是指定的是自定义的该模块,则是由myApp这个来管理这个模块。如果为空，也是一个模块-->
+   <div ng-app="product">
+       <div class="container" ng-controller="productController">
+           <!--导航-->
+           <nav>
+               <form class="navbar-form navbar-left" role="search">
+                   <div class="form-group">
+                       <!--ng-model绑定 下面列出3种search,搜索过滤的功能search1，search2，search3-->
+                       <!--<input type="text" ng-model="search1" class="form-control" placeholder="Search">-->
+                       <!--<input type="text" ng-model="search2" class="form-control" placeholder="Search">-->
+                       <input type="text" ng-model="search3.id" class="form-control" placeholder="Search">
+                   </div>
+                   <!--<button type="submit" class="btn btn-default">Submit</button>-->
+               </form>
+           </nav>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>产品编号</th>
+                        <th>产品名称</th>
+                        <th>产品价格</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!--循环遍历productController下的productData2数组-->
+                    <!--<tr ng-repeat="products in productData2 |filter:search1">-->   <!--filter加上后，就会过滤掉ng-model:search1的值会把只要匹配search1的就会过滤出来-->
+                    <!--<tr ng-repeat="products in productData2 |filter:{id:search2 }">    &lt;!&ndash;在ng-model="search2",只过滤出在id里匹配的值 &ndash;&gt;-->
+                    <tr ng-repeat="products in productData2 |filter:search3">    <!--在ng-model="search2",只过滤出在id里匹配的值 -->
+                        <td>
+                            {{products.id}}
+                        </td>
+                        <td>
+                            {{products.name}}
+                        </td>
+                        <td>
+                            {{products.price|currency:'RMB '}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+       </div>
+
+   </div>
+<script type="text/javascript" src="../js/angularjs.js"></script>
+<script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>

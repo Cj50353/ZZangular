@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+    /*
+    * 注意事项:
+     1.使用前要判断浏览器是否支持
+     2.写数据的时候，需要异常处理，避免超出容量抛错
+     3.避免把敏感的信息存入localStorage
+     4.key的唯一性
+
+     本地存储使用的限制：
+     1.更新策略（需要手动删除）
+     2.子域名间不能共享(cookie子域名可以共享;通过postMassage)
+     3.超出存储大小时（LRU,FIFO淘汰旧数据）
+     4.server端不能直接取数据(cookie有相应的接口可以取到,localStorage在是存在客户端的,servce取不到.)
+
+     可以存数组,脚本,json,css,img
+     数组需要序列化 转化成字符串
+
+     过期控制.
+     canvas有永远安全策略，当图片不在同一个域名下，需要给图片所在服务器加一个accessorigin=所有，表示可以跨域
+    * */
+        var src='./主题之家_201601060506.jpg';
+        var set=function (key){
+            var img=document.createElement('img');
+            img.addEventListener('load',function(){
+
+                var imgCanvas=document.createElement('canvas');
+                imgContext=imgCanvas.getContext('2d');
+                imgCanvas.width=this.width;
+                imgCanvas.height=this.height;
+
+                imgContext.drawImage(this,0,0,this.width,this.height);
+
+                var imgUrl=imgCanvas.toDataURL('image/png');
+
+                try{
+                    localStorage.setItem(key,imgUrl);
+                }catch(e){
+                    console.log('storage failed:'+e);
+                }
+            },false);
+            img.src=src;
+        };
+
+        var get= function (key) {
+            var srcStr=localStorage.getItem(key);
+            var imgObj=document.createElement('img');
+            imgObj.src=srcStr;
+            document.body.appendChild(imgObj);
+        };
+       /* return{
+            src:src,
+            set:set,
+            get:get
+        }*/
+
+
+        /*过期策略*/
+        function setTime(key,value){
+            var curTime=new Date().getTime();
+            localStorage.setItem(key,JSON.stringify({data:value,time:curTime}));
+        }
+
+        function getTime(key,exp){
+            var data=localStorage.getItem(key);
+            var dataObj=JSON.parse(data);
+            if(new Date().getTime()-dataObj.time>exp){
+                console.log('expires');
+            }
+            else{
+                console.log('data='+dataObj.data);
+            }
+        }
+
+</script>
+</html>

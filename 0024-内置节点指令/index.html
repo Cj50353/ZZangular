@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+    <style>
+        .box{
+            color:deeppink;
+        }
+        .li1{
+              color:darkgreen;
+          }
+        .li2{
+            color:goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <!--ng-app管理整个div,如果引号不为空，则认为是指定的是自定义的该模块,则是由myApp这个来管理这个模块。如果为空，也是一个模块-->
+   <div ng-app="myApp" ng-controller="firstController">
+       <!--ng-style的用法1，直接在行间写-->
+       <div ng-style="{color:'red','margin-top':'150px'}">你好呀</div>
+       <!--ng-style的用法2，调用js的对象-->
+       <div ng-style=defaultStyle>你好呀</div>
+
+       <!--ng-class的用法是当status为false,移除box这个类，为true,添加box这个类-->
+       <div ng-class="{box:status}">粉红</div>
+
+       <!--ng-click点击时的触发事件-->
+       <button ng-click="changeStatus($event)" value="haha">haha</button>
+       <hr/>
+       <!--ng-init  初始化一个数组-->
+       <ul ng-init="cityArr=['上海','北京','南京']">
+           <!--ng-class-even是在偶数时加上这个li1类  ng-class-odd是在奇数时加上这个li2类-->
+           <li ng-class-even="'li1'" ng-class-odd="'li2'" ng-repeat="city in cityArr">
+               <span>
+                   {{city}}
+               </span>
+           </li>
+       </ul>
+       <hr/>
+       <!--ng-show=false时，会在该div上加上ng-hide这个类，所以隐藏。如果ng-show=true时，不在该div上加上ng-hide类-->
+       <div ng-show="status">显示还是隐藏1</div>
+       <!--ng-hide=false时，不在该div上加上ng-hide类，所以显示。如果ng-hide=true时，会在该div上加上ng-hide这个类-->
+       <div ng-hide="status">显示还是隐藏2</div>
+        <hr/>
+       <!--ng-switch 是切换功能 on表示根据status这个状态值进行判断，当ng-switch-when为true时，只添加为true的li，当ng-switch-when为false时，只添加为false的li-->
+       <ul ng-switch on="status">
+           <li ng-switch-when="true">true</li>
+           <li ng-switch-when="false">false</li>
+       </ul>
+       <hr/>
+       <!--这种做法不好的地方是当angular.js还没有加载时这里会报一个错误就图片没找到，当加载这里时，图片会加载2次，所以性能不好-->
+       <img src="{{src}}" alt=""/>
+
+       <!--这种做法好处是等待angular.js加载完成后才会去加载这个图片，相当于延时加载的效果，所以性能好-->
+       <img ng-src="{{src}}" alt=""/>
+       <hr/>
+        <!--ng-href用法是当angular.js加载完成后，点击a会链接到相应的网址页面去，避免了还没加载完就去点击a,而会跳到404页面去的不好体验-->
+       <a ng-href="{{href}}" target="_blank">百度</a>
+       <hr/>
+       <!--ng-if是如果status为true，应时表达式为真，则会加载整个div语句-->
+       <div ng-if="status">
+           status show
+       </div>
+   </div>
+
+<script type="text/javascript" src="../js/angularjs.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>

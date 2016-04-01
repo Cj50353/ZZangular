@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css"/>
+</head>
+<body>
+    <!--ng-app管理整个div,如果引号不为空，则认为是指定的是自定义的该模块,则是由myApp这个来管理这个模块。如果为空，也是一个模块-->
+   <div ng-app="myApp" >
+       <!--如果在html中自定义一个标签如：custom-tags，那么对应的在js中要写成驼峰形式：customTags.如果在html中自定义一个标签：customtags.对应的在js中要写成customtags-->
+      <custom-tags>默认值E</custom-tags><br/>
+            <hr/>
+       <h1>firstController</h1>
+       <div ng-controller="firstController">
+           {{name}}<br/>
+           <custom-tags>默认值E</custom-tags><br/>
+       </div>
+   </div>
+
+<script type="text/javascript" src="../js/angularjs.js"></script>
+<script type="text/javascript" src="index.js"></script>
+</body>
+</html>
