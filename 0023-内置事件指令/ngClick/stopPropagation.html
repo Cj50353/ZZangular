@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="app">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+</head>
+<body ng-controller="demo as d">
+<div ng-click="d.click('parent',$event)">
+    given some text for click
+    <hr>
+    <input type="checkbox" ng-model="d.stopPropagation" />Stop Propagation ?
+    <hr>
+    <button type="button" ng-click="d.click('button',$event)">button</button>
+</div>
+<script type="text/javascript" src="../../js/angularjs.js"></script>
+<script type="text/javascript">
+    angular.module("app",[])
+            .controller("demo",[function(){
+                var vm = this;
+                vm.click = function(name,$event){
+                    console.log(name +" -----called");
+                    if(vm.stopPropagation){
+                        $event.stopPropagation();
+                    }
+                };
+                return vm;
+            }]);
+</script>
+</body>
+</html>
+
+<!--Angular支持的event： click dblclick mousedown mouseup mouseover mouseout mousemove mouseenter mouseleave keydown keyup keypress submit focus blur copy cut paste
+Angular在执行事件函数时候传入了一个名叫$event的常量，该常量即代表当前event对象，如果你在Angular之前引入了jQuery那么这就是jQuery的event.-->
