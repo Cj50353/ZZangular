@@ -9,14 +9,13 @@ var firstController=function($scope){
         {text : "cost", key : "cost", checked : false,disabled:false}
     ];
     $scope.selectAll= function () {
-       /* for(var i = 0, item; item = $scope.list[i++];){
+        for(var i = 0, item; item = $scope.list[i++];){
             if(item.disabled !== null || item.disabled !== undefined || item.disabled !== ''){
                 if(item.disabled!=true){
                     item.checked=true;
                 }
             }
-        }*/
-        $scope.list[1].checked=true;
+        }
     };
     $scope.unselectAll= function () {
         for(var i = 0, item; item = $scope.list[i++];){
