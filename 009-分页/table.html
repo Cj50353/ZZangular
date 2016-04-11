@@ -1,0 +1,65 @@
+<table id="infoTable" class="table table-striped tablesorter">
+    <thead>
+    <tr>
+        <th>Edit</th>
+        <th ng-click="showIcons('id'); predicate = 'id'; reverse=false">ID&nbsp;&nbsp;
+            <span ng-show="showId"><span class="glyphicon glyphicon-sort-by-order"></span></span>
+        </th>
+        <th ng-click="showIcons('title'); predicate = 'title'; reverse=false">Title&nbsp;&nbsp;
+            <span ng-show="showTitle"><span class="glyphicon glyphicon-sort-by-alphabet"></span></span>
+        </th>
+        <th ng-click="showIcons('fName'); predicate = 'fName'; reverse=false">First Name&nbsp;&nbsp;
+            <span ng-show="showFName"><span class="glyphicon glyphicon-sort-by-alphabet"></span></span>
+        </th>
+        <th ng-click="showIcons('lName'); predicate = 'lName'; reverse=false">Last Name&nbsp;&nbsp;
+            <span ng-show="showLName"><span class="glyphicon glyphicon-sort-by-alphabet"></span></span>
+        </th>
+        <th ng-click="showIcons('sex'); predicate = 'sex'; reverse=false">Sex&nbsp;&nbsp;
+            <span ng-show="showSex"><span class="glyphicon glyphicon-sort-by-alphabet"></span></span>
+        </th>
+        <th ng-click="showIcons('age'); predicate = 'age'; reverse=false">Age&nbsp;&nbsp;
+            <span ng-show="showAge"><span class="glyphicon glyphicon-sort-by-order"></span></span>
+        </th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="user in subUsers">
+        <td>
+            <button class="btn btn-success">
+                <a style="color: white;" ng-href='#/edit/{{user.id}}'><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit</a>
+            </button>
+        </td>
+        <td>{{ user.id }}</td>
+        <td>{{ user.title }}</td>
+        <td>{{ user.fName }}</td>
+        <td>{{ user.lName }}</td>
+        <td>{{ user.sex }}</td>
+        <td>{{ user.age }}</td>
+        <td>
+            <button class="btn btn-warning" ng-click="deleteUser(user.id)">
+                <span class="glyphicon glyphicon-remove"></span>&nbsp;&nbsp;Delete
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        <li>
+            <a href="##" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li><a href="##">1</a></li>
+        <li><a href="##">2</a></li>
+        <li><a href="##">3</a></li>
+        <li><a href="##">4</a></li>
+        <li><a href="##">5</a></li>
+        <li>
+            <a href="##" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
