@@ -8,7 +8,7 @@
 <body>
     <!--ng-app管理整个div,如果引号不为空，则认为是指定的是自定义的该模块,则是由myApp这个来管理这个模块。如果为空，也是一个模块-->
    <div ng-app="myApp" ng-controller="firstController">
-        <button ng-click="changeStatus($event)">切换</button>   <!--$event当前事件处理的对象，调用该函数的参数会接收到-->
+        <button ng-click="changeStatus($event)" type="button">切换</button>   <!--$event当前事件处理的对象，调用该函数的参数会接收到-->
         <p>{{status}}</p>
    </div>
 
@@ -24,6 +24,7 @@
                     //】  angular.element实现了简单的jq方法，把当前的js元素转换了jq元素
                     angular.element(event.target).html('当前状态：'+$scope.status);
                 }
+                console.log(angular.element(document.querySelector('button')).attr('type'));
             });
 </script>
 </body>
