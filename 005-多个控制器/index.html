@@ -10,7 +10,7 @@ firstController的作用域是包含secondController。输入firstController里�
 （前提是secondController里的name没有被赋初值），而反过来修改secondController里的name不会影响firstController里的name,
 因为作用域不够,但是一旦secondController的name值被输入改变了也就是被创建了，再次输入firstController的name值也不会改变secondController的name值
 -->
-<div ng-app><!--angular会管理这个div-->
+<div ng-app="app"><!--angular会管理这个div-->
     <div ng-controller="firstController">  <!--//会去找firstController这个函数-->
         <input type="text" value="" ng-model="name"/>{{name}}
 

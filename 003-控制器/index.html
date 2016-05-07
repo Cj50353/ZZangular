@@ -5,12 +5,19 @@
     <title></title>
 </head>
 <body >
-<div ng-app><!--angular会管理这个div-->
+<div ng-app="app"><!--angular会管理这个div-->
     <div ng-controller="firstController">  <!--//会去找firstController这个函数-->
         <input type="text" value="" ng-model="name"/>
         <input type="text" value="" ng-model="age"/>
         {{name}}
         {{age}}
+        <input type="button" ng-click="fn()"/>
+    </div>
+    <div ng-controller="firstController">
+        <span ng-bind="name"></span>
+        <span ng-bind="age"></span>
+        <input type="text" ng-model="name"/>
+        <input type="text" ng-model="age"/>
     </div>
 </div>
 
